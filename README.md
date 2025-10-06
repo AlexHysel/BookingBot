@@ -4,6 +4,7 @@ This Telegram bot allows users to book time slots for services through a simple 
 
 It supports multiple clients (multi-tenant architecture), ensuring that data from different users and organizations is securely separated.
 
+
 --- Features ---
 
 🗓️ Scheduling system: Users can choose available days and times for bookings.
