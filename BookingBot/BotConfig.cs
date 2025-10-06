@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 
+//This class is for getting config and saving changes
+
 public class BotConfig
 {
     public string BotId { get; set; } = string.Empty;
@@ -21,13 +23,3 @@ public class BotConfig
         File.WriteAllText("config.json", json);
     }
 }
-
-/*
-{
-	"botId": "",
-	"adminPass": "",
-	"adminId": "",
-	"dayStart": "",
-	"dayEnd": ""
-}
-*/

@@ -18,6 +18,21 @@ class Keyboards
             InlineKeyboardButton.WithCallbackData("Check my booking", "checkBooking")
         });
 
+    public static InlineKeyboardMarkup BookingMenu = new InlineKeyboardMarkup(
+        new InlineKeyboardButton[]
+        {
+            InlineKeyboardButton.WithCallbackData("Change day", "changeDay"),
+            InlineKeyboardButton.WithCallbackData("Change time", "changeTime"),
+            InlineKeyboardButton.WithCallbackData("Cancel my booking", "cancelBooking")
+        });
+
+    public static InlineKeyboardMarkup CancelBooking = new InlineKeyboardMarkup(
+        new InlineKeyboardButton[]
+        {
+            InlineKeyboardButton.WithCallbackData("Yes", "cancelyes"),
+            InlineKeyboardButton.WithCallbackData("No", "cancelno")
+        });
+
     public static InlineKeyboardMarkup ChooseDay = new InlineKeyboardMarkup(
         new List<InlineKeyboardButton[]>
         {
@@ -49,5 +64,16 @@ class Keyboards
             new KeyboardButton[] {new KeyboardButton(date.AddDays(6).ToString())},
             new KeyboardButton[] {new KeyboardButton("Cancel")}
         });
+    }
+
+    public static ReplyKeyboardMarkup BookingTimeKeyboard(List<TimeOnly> slots)
+    {
+        List<KeyboardButton[]> buttons = new List<KeyboardButton[]>();
+
+        foreach (var slot in slots)
+            buttons.Add(new KeyboardButton[] { new KeyboardButton(slot.ToString()) });
+        buttons.Add(new KeyboardButton[] { new KeyboardButton("Cancel") });
+
+        return new ReplyKeyboardMarkup(buttons);
     }
 }
