@@ -39,6 +39,7 @@ public class UserHandler
         var msg = update.Message;
         long chatId = msg.Chat.Id;
 
+        //User's state is default
         if (!_userStates.ContainsKey(chatId))
         {
             if (msg.Text == _config.AdminPass)
@@ -144,7 +145,7 @@ public class UserHandler
         _userStates[chatId] = UserState.ChooseTime;
 
         var times = _schedule.GetOpenSlots(date, _config.DayStart, _config.DayEnd);
-        await _botClient.SendMessage(chatId, "Choose day:", replyMarkup: Keyboards.BookingDaysKeyboard(dayEnd));
+        await _botClient.SendMessage(chatId, "Choose time:", replyMarkup: Keyboards.BookingTimeKeyboard(times));
     }
 
     private async Task HandleChangeDay(long chatId, string text, Slot slot)
